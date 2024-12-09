@@ -6,6 +6,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 7.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
+# Catch unsafe migrations in development
+gem 'strong_migrations', '~> 2.0.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 # Use sqlite3 as the database for Active Record
