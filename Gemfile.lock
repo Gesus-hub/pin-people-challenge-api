@@ -159,6 +159,7 @@ GEM
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
     psych (5.2.1)
       date
       stringio
@@ -247,6 +248,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -314,10 +316,12 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.2)
   rubocop-rails-omakase
   selenium-webdriver
+  spring (~> 4.2.1)
   sprockets-rails
   sqlite3 (>= 1.4)
   stimulus-rails
