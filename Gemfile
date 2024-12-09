@@ -37,6 +37,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  # rspec-rails brings the RSpec testing framework to Ruby on Rails.
+  gem "rspec-rails", "~> 7.0.1"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
@@ -51,6 +53,8 @@ group :development, :test do
 end
 
 group :development do
+  # This gem implements the rspec command for Spring.
+  gem "spring-commands-rspec"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]

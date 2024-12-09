@@ -6,10 +6,8 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  config.cache_classes = false
   # Settings specified here will take precedence over those in config/application.rb.
-
-  # While tests run files are not watched, reloading is not necessary.
-  config.enable_reloading = false
 
   # Eager loading loads your entire application. When running a single test locally,
   # this is usually not necessary, and can slow down your test suite. However, it's
