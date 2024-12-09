@@ -1,8 +1,79 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - vendor/**/*
+    - log/**/*
+    - db/schema.rb
+    - db/migrate/*
+    - db/seeds.rb
+    - bin/*
+    - config/initializers/**/*
+    - lib/tasks/**/*
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*
+
+Metrics/BlockLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+  Max: 70
+  Exclude:
+    - spec/**/*
+
+Metrics/ClassLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+Metrics/MethodLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+  Exclude:
+    - db/migrate/*
+
+Metrics/ModuleLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+RSpec/ContextWording:
+  Description: Checks that ‘context` docstring starts with an allowed prefix.
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ContextWording
+  Prefixes:
+    - and
+    - when
+    - with
+    - without
+
+RSpec/DescribeClass:
+  Description: Check that the first argument to the top level describe is a constant.
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribeClass
+  Exclude:
+    - spec/integration/**/*
+
+RSpec/EmptyExampleGroup:
+  Description: Checks if an example group does not include any tests.
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/EmptyExampleGroup
+  Exclude:
+    - spec/factories/**/*
+    - spec/integration/**/*
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
