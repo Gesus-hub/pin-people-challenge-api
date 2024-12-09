@@ -51,7 +51,7 @@ group :development, :test do
   gem 'brakeman', require: false
 
   # It's a library for generating fake data such as names, addresses, and phone numbers.
-  gem "faker",                "~> 3.4.2"
+  gem 'faker', '~> 3.4.2'
 
   # factory_bot is a fixtures replacement with a straightforward definition syntax
   gem 'factory_bot_rails', '~> 6.4.3'
