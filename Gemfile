@@ -50,6 +50,9 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
 
+  # factory_bot is a fixtures replacement with a straightforward definition syntax
+  gem 'factory_bot_rails', '~> 6.4.3'
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
 end
