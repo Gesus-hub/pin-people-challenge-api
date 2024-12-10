@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_10_013231) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.enum "role", default: "human_resources", null: false, enum_type: "user_role"
+    t.enum "role", default: "admin", null: false, enum_type: "user_role"
     t.string "password_digest"
     t.jsonb "metadata", default: {}
     t.boolean "request_new_password", default: false

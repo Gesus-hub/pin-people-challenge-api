@@ -7,7 +7,6 @@ RSpec.describe 'Api::Users::RegistrationsController' do
     let(:sign_up_params) do
       {
         name: 'Vinicius Guimaraes',
-        role: 'employee',
         email: 'vinicius@pinpeople.com.br',
         password: '123456'
       }
@@ -19,7 +18,7 @@ RSpec.describe 'Api::Users::RegistrationsController' do
       expected_body = {
         data: {
           name: sign_up_params[:name],
-          role: sign_up_params[:role],
+          role: User.last.role,
           email: sign_up_params[:email],
           metadata: {}
         }

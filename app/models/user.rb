@@ -38,7 +38,7 @@ end
 #  request_new_password   :boolean          default(FALSE)
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :enum             default("human_resources"), not null
+#  role                   :enum             default("admin"), not null
 #  sign_in_count          :integer          default(0), not null
 #  status                 :integer          default("active")
 #  created_at             :datetime         not null
