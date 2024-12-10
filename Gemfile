@@ -12,6 +12,9 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'pg', '~> 1.1'
 gem 'strong_migrations', '~> 2.0.0'
 
+# Tools
+gem 'bcrypt',      '~> 3.1.20'
+
 group :development do
   gem 'rubocop', '~> 1.68.0', require: false
   gem 'rubocop-factory_bot', '~> 2.26.1', require: false
