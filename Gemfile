@@ -14,6 +14,7 @@ gem 'strong_migrations', '~> 2.0.0'
 
 # Tools
 gem 'bcrypt',      '~> 3.1.20'
+gem 'discard',     '~> 1.4.0'
 
 group :development do
   gem 'rubocop', '~> 1.68.0', require: false
