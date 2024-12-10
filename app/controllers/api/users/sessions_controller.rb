@@ -7,7 +7,7 @@ module Api
         response = User::SignIn::AuthenticatorService.call(sign_in_params[:email], sign_in_params[:password])
 
         if response.ok?
-          render json: data_serializer(response.result)
+          render json: { data: { token: Pinpeople::JsonWebToken.encode(sub: response.result.id) } }
         else
           render json: { errors: response.errors.full_messages }, status: :unauthorized
         end
