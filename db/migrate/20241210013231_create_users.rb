@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[7.2]
     create_table :users, id: :uuid do |t|
       t.string :name,                    null: false
       t.string :email,                   null: false, index: { unique: true, where: "discarded_at IS NULL" }
-      t.enum :role,                      default: :human_resources, null: false, enum_type: :user_role, index: true
+      t.enum :role,                      default: :admin, null: false, enum_type: :user_role, index: true
       t.string :password_digest
       t.jsonb :metadata,                 index: { using: :gin, algorithm: :concurrently }, default: {}
       t.boolean :request_new_password,   default: false
