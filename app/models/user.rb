@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
   validates :name, :email, :password_digest, presence: true
   validates :email, uniqueness: { conditions: -> { where(discarded_at: nil) } }
+
+  def account_not_confirmed?
+    confirmed_at.nil?
+  end
 end
 
 # == Schema Information
