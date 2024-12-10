@@ -17,6 +17,8 @@ gem 'bcrypt',      '~> 3.1.20'
 gem 'discard',     '~> 1.4.0'
 
 group :development do
+  gem 'annotate', '~> 3.2.0'
+  gem 'letter_opener', '~> 1.10.0'
   gem 'rubocop', '~> 1.68.0', require: false
   gem 'rubocop-factory_bot', '~> 2.26.1', require: false
   gem 'rubocop-performance', '~> 1.23.0', require: false
@@ -29,7 +31,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'annotate', '~> 3.2.0'
   gem 'brakeman', require: false
   gem 'database_cleaner', '~> 2.1.0'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
