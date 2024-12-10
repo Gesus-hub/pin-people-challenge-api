@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :users do
       post :sign_up, to: 'registrations#create'
+      post :confirm, to: 'registrations#confirm'
     end
   end
 

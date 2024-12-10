@@ -3,6 +3,16 @@
 module Api
   module Users
     class RegistrationsController < ::ApplicationController
+      def confirm
+        response = User::SignUp::ConfirmationRegisterService.call(params[:token])
+
+        if response.ok?
+          render json: data_serializer(response.result)
+        else
+          render json: { errors: response.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       def create
         response = User::SignUp::RegisterService.call(sign_up_params)
 

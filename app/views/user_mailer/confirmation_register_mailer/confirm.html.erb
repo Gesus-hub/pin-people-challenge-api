@@ -1,0 +1,32 @@
+Olá, <strong><%= @name %></strong>! Obrigado por se cadastrar na Pin People!
+
+<br /><br />
+
+Precisamos que confirme sua conta clicando no link abaixo para você poder acessar o sistema.
+
+<br /><br />
+
+<div style="text-align: center;">
+  <a
+    href="<%= "#{ENV['APP_WEB_URL']}/signin?token=#{@token}" %>"
+    style="
+      text-decoration: none;
+      font-size: 16px;
+      color: #ffffff;
+      border-style: solid;
+      border-color: #0088a0;
+      border-width: 10px 20px;
+      display: inline-block;
+      background: #0088a0;
+      border-radius: 100px;
+      font-weight: bold;
+      font-style: normal;
+      line-height: 18px;
+      width: auto;
+      text-align: center;
+      padding: 5px 10px;
+    "
+  >
+    Confirmar meu cadastro
+  </a>
+</div>

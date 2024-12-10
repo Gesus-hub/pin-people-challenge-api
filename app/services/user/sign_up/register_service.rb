@@ -12,6 +12,8 @@ class User
       def call
         result = create_user
 
+        User::SignUp::EmailConfirmationRegisterService.call(result.id) if result
+
         response.add_result(result)
       end
 
@@ -29,7 +31,6 @@ class User
         user.merge(confirmation_data)
       end
 
-      # TODO: move it to another step
       def confirmation_data
         {
           confirmation_token: generate_confirmation_token,

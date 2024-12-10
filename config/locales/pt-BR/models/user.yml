@@ -1,0 +1,46 @@
+pt-BR:
+  field_empty: "não pode ficar em branco"
+  activerecord:
+    models:
+      user: 'Usuário'
+    attributes:
+      user:
+        email: 'Email'
+        password: 'Senha'
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              not_logged: "Usuário não logado ou token inválido"
+              user_or_password_invalid: "Email ou senha incorreto"
+              invalid_token: 'Token enviado esta vazio ou inválido'
+            email:
+              invalid: 'Email invalido'
+              taken: 'Email em uso'
+  services:
+    errors:
+      user/sign_in/authenticator_service:
+        user_or_password_invalid: "Email ou senha incorreto"
+        account_not_confirmed: "Conta não confirmada"
+      user/sign_up/confirmation_register_service:
+        already_confirmed: "Conta já confirmada"
+        token_expired: "Token expirado"
+        token_not_found: "Token não encontrado para validação"
+      user/show:
+        user_not_found: "Usuário não localizado"
+      profile/show:
+        user_not_found: "Usuário não localizado"
+      profile/update:
+        current_password_wrong: "Senha atual invalida"
+      profile/password/change:
+        password_match_wrong: "Nova senha não combina com senha de confirmação"
+        current_password_wrong: "Senha atual invalida"
+      profile/password/reset:
+        reset_password_token_invalid: "Token para resetar senha invalido"
+        password_match_wrong: "Nova senha não combina com senha de confirmação"
+      profile/password/validate_reset:
+        token_not_found: "Token não encontrado para validação"
+        token_expired: "Token expirado"
+      profile/password/recover:
+        email_not_found: "Email não encontrado"
