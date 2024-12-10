@@ -43,6 +43,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   # rspec-rails brings the RSpec testing framework to Ruby on Rails.
   gem 'rspec-rails', '~> 7.0.1'
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
 
@@ -60,6 +61,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
+
+  # Add a comment summarizing the current schema
+  gem 'annotate',              '~> 3.2.0'
 end
 
 group :development do
