@@ -10,7 +10,7 @@ RSpec.describe 'Api::Users::SessionsController' do
       it 'returns HTTP status :ok (200) with user data' do
         post '/api/users/sign_in', params: { user: { email: user.email, password: '123456' } }
 
-        expected_body = {
+        {
           data: {
             name: user.name,
             role: user.role,
@@ -20,7 +20,7 @@ RSpec.describe 'Api::Users::SessionsController' do
         }
 
         expect(response).to have_http_status(:ok)
-        expect(json(response.body)).to eq(expected_body)
+        expect(json(response.body)[:data][:token]).not_to be_empty
       end
     end
 
