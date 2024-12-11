@@ -6,12 +6,12 @@ class Question < ApplicationRecord
   belongs_to :survey
   has_many :options, dependent: :destroy
 
+  accepts_nested_attributes_for :options, allow_destroy: true
+
   validates :content, presence: true
   validates :question_type, presence: true
 
   enum :question_type, { open_text: 0, boolean: 1, scale: 2, multiple_choice: 3 }
-
-  # accepts_nested_attributes_for :options, allow_destroy: true
 end
 
 # == Schema Information
