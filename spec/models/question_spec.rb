@@ -6,6 +6,7 @@ RSpec.describe Question do
   describe 'associations' do
     it { is_expected.to belong_to(:survey) }
     it { is_expected.to have_many(:options).dependent(:destroy) }
+    it { is_expected.to have_many(:responses).dependent(:destroy) }
     it { is_expected.to accept_nested_attributes_for(:options).allow_destroy(true) }
   end
 

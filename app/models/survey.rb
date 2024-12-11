@@ -5,10 +5,16 @@ class Survey < ApplicationRecord
 
   belongs_to :company
   has_many :questions, dependent: :destroy
+  has_many :responses, dependent: :destroy
 
   accepts_nested_attributes_for :questions, allow_destroy: true
 
   validates :title, presence: true
+
+  def unanswered_users
+    answered_user_ids = responses.pluck(:user_id)
+    company.users.where.not(id: answered_user_ids)
+  end
 end
 
 # == Schema Information
