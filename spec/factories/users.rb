@@ -8,5 +8,13 @@ FactoryBot.define do
     role { User::ROLES.keys.sample }
     status { :active }
     confirmed_at { Time.current }
+
+    trait :with_company do
+      before(:create) do |user|
+        company = create(:company)
+        user.company = company
+        user.role = 'admin'
+      end
+    end
   end
 end

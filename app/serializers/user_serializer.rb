@@ -18,7 +18,8 @@ class UserSerializer
       name: @user.name,
       email: @user.email,
       role: @user.role,
-      metadata: @user.metadata
+      metadata: @user.metadata,
+      company: CompanySerializer.new(@user.company).serializable_hash
     }
   end
 end

@@ -26,7 +26,11 @@ module Api
       private
 
       def sign_up_params
-        params.require(:sign_up).permit(:name, :email, :password)
+        params
+          .require(:sign_up)
+          .permit(:name, :email, :password,
+                  company: %i[name trade_name email
+                              website_facebook business_description])
       end
     end
   end

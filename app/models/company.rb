@@ -3,6 +3,8 @@
 class Company < ApplicationRecord
   include Discard::Model
 
+  has_many :users, dependent: :destroy
+
   STATUSES = %i[inactive active].freeze
   enum :status, STATUSES
 
@@ -19,7 +21,7 @@ end
 #  email                :string           not null
 #  metadata             :jsonb
 #  name                 :string           not null
-#  status               :integer          default(1)
+#  status               :integer          default("active")
 #  trade_name           :string           not null
 #  website_facebook     :string           not null
 #  created_at           :datetime         not null

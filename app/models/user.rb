@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   include Discard::Model
 
+  belongs_to :company, optional: true
+
   has_secure_password
 
   ROLES = {
@@ -47,13 +49,19 @@ end
 #  status                 :integer          default("active")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  company_id             :uuid
 #
 # Indexes
 #
+#  index_users_on_company_id            (company_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_discarded_at          (discarded_at)
 #  index_users_on_email                 (email) UNIQUE WHERE (discarded_at IS NULL)
 #  index_users_on_metadata              (metadata) USING gin
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_role                  (role)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
 #

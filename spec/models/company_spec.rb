@@ -9,5 +9,9 @@ RSpec.describe Company do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:website_facebook) }
     it { is_expected.to validate_presence_of(:business_description) }
+
+    describe 'associations' do
+      it { is_expected.to have_many(:users).dependent(:destroy) }
+    end
   end
 end
