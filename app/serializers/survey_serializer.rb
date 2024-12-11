@@ -1,20 +1,26 @@
 # frozen_string_literal: true
 
 class SurveySerializer
-  def initialize(survey)
-    @survey = survey
+  def initialize(resource)
+    @resource = resource
   end
 
   def serializable_hash
-    hash_for_one_record
+    return if resource.blank?
+    return hash_for_collection if resource.is_a?(Enumerable)
+
+    hash_for_one_record(resource)
   end
 
   private
 
-  attr_reader :survey
+  attr_reader :resource
 
-  # rubocop:disable Metrics/AbcSize
-  def hash_for_one_record
+  def hash_for_collection
+    resource.map { |survey| hash_for_one_record(survey) }
+  end
+
+  def hash_for_one_record(survey)
     {
       id: survey.id,
       title: survey.title,
@@ -25,5 +31,4 @@ class SurveySerializer
       company: CompanySerializer.new(survey.company).serializable_hash
     }
   end
-  # rubocop:enable Metrics/AbcSize
 end

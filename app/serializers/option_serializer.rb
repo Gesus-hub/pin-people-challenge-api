@@ -1,19 +1,26 @@
 # frozen_string_literal: true
 
 class OptionSerializer
-  def initialize(option)
-    @option = option
+  def initialize(resource)
+    @resource = resource
   end
 
   def serializable_hash
-    hash_for_one_record
+    return if resource.blank?
+    return hash_for_collection if resource.is_a?(Enumerable)
+
+    hash_for_one_record(resource)
   end
 
   private
 
-  attr_reader :option
+  attr_reader :resource
 
-  def hash_for_one_record
+  def hash_for_collection
+    resource.map { |option| hash_for_one_record(option) }
+  end
+
+  def hash_for_one_record(option)
     {
       id: option.id,
       value: option.value,
