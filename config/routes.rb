@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       post :sign_up, to: 'registrations#create'
       post :confirm, to: 'registrations#confirm'
     end
+
+    resources :companies do
+      put :restore, on: :member
+    end
   end
 
   # Defines the root path route ("/")

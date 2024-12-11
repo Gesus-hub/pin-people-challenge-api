@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_10_013231) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_10_230814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "user_role", ["employee", "admin", "human_resources"]
+
+  create_table "companies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "trade_name", null: false
+    t.string "email", null: false
+    t.string "website_facebook", null: false
+    t.string "business_description", null: false
+    t.integer "status", default: 1
+    t.jsonb "metadata", default: {}
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_companies_on_discarded_at"
+    t.index ["metadata"], name: "index_companies_on_metadata", using: :gin
+  end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
