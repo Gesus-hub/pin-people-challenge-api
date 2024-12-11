@@ -14,6 +14,7 @@ RSpec.describe 'Api::Users::RegistrationsController' do
 
         expected_body = {
           data: {
+            id: user.id,
             name: user.name,
             role: user.role,
             email: user.email,
@@ -81,6 +82,7 @@ RSpec.describe 'Api::Users::RegistrationsController' do
 
         expected_body = {
           data: {
+            id: User.last.id,
             name: sign_up_params[:name],
             role: User.last.role,
             email: sign_up_params[:email],
@@ -113,6 +115,7 @@ RSpec.describe 'Api::Users::RegistrationsController' do
 
         expected_body = {
           data: {
+            id: User.last.id,
             name: sign_up_params[:name],
             role: User.last.role,
             email: sign_up_params[:email],

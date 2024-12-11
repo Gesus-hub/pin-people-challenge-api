@@ -24,6 +24,7 @@ class UserSerializer
     {
       id: user.id,
       name: user.name,
+      role: user.role,
       email: user.email,
       metadata: user.metadata,
       company: CompanySerializer.new(user.company).serializable_hash
