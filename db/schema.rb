@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_10_013231) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_11_024126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_10_013231) do
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_companies_on_discarded_at"
     t.index ["metadata"], name: "index_companies_on_metadata", using: :gin
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "discarded_at"
+    t.uuid "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_surveys_on_company_id"
+    t.index ["discarded_at"], name: "index_surveys_on_discarded_at"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -62,5 +72,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_10_013231) do
     t.index ["role"], name: "index_users_on_role"
   end
 
+  add_foreign_key "surveys", "companies"
   add_foreign_key "users", "companies"
 end
