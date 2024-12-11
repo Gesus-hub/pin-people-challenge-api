@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Option < ApplicationRecord
   include Discard::Model
 

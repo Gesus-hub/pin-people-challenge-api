@@ -13,6 +13,7 @@ class SurveySerializer
 
   attr_reader :survey
 
+  # rubocop:disable Metrics/AbcSize
   def hash_for_one_record
     {
       id: survey.id,
@@ -24,4 +25,5 @@ class SurveySerializer
       company: CompanySerializer.new(survey.company).serializable_hash
     }
   end
+  # rubocop:enable Metrics/AbcSize
 end
