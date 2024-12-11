@@ -73,9 +73,11 @@ RSpec.describe 'API::Companies::SurveysController' do
                     updated_at: option2.updated_at.iso8601(3),
                     discarded_at: option2.discarded_at
                   }
-                ]
+                ],
+                responses: nil
               }
-            ]
+            ],
+            responses: nil
           }
         }
 

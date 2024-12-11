@@ -2,11 +2,11 @@
 
 module Api
   module Companies
-    class SurveysController < ApplicationController
+    class SurveysController < Api::ApplicationController
       before_action :authenticate_user!
 
       def create
-        service = Surveys::CreatorService.new(
+        service = ::Surveys::CreatorService.new(
           current_user: current_user,
           survey_params: survey_params
         )

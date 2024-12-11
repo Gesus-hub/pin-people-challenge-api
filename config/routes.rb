@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
     resources :companies do
       put :restore, on: :member
-
-      resources :surveys, only: [:create], module: :companies
+      resources :surveys, only: [:create], module: :companies do
+        resources :invites, only: [:create], module: :surveys
+      end
     end
   end
 end

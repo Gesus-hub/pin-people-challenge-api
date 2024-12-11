@@ -27,7 +27,8 @@ class QuestionSerializer
       question_type: question.question_type,
       created_at: question.created_at,
       updated_at: question.updated_at,
-      options: OptionSerializer.new(question.options).serializable_hash
+      options: OptionSerializer.new(question.options).serializable_hash,
+      responses: ResponseSerializer.new(question.responses).serializable_hash
     }
   end
 end
