@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       put :restore, on: :member
       resources :surveys, only: [:create], module: :companies do
         resources :invites, only: [:create], module: :surveys
+        resources :responses, only: [:create], module: :surveys
       end
     end
   end
