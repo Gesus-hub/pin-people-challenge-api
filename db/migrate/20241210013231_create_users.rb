@@ -22,6 +22,8 @@ class CreateUsers < ActiveRecord::Migration[7.2]
       t.integer :status,                 default: 1
       t.datetime :discarded_at,          index: true
 
+      t.references :company, type: :uuid, foreign_key: true, index: { algorithm: :concurrently }
+
       t.timestamps
     end
   end

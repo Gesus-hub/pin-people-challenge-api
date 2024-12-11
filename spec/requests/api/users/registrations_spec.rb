@@ -17,7 +17,8 @@ RSpec.describe 'Api::Users::RegistrationsController' do
             name: user.name,
             role: user.role,
             email: user.email,
-            metadata: {}
+            metadata: {},
+            company: nil
           }
         }
 
@@ -63,24 +64,66 @@ RSpec.describe 'Api::Users::RegistrationsController' do
       {
         name: 'Vinicius Guimaraes',
         email: 'vinicius@pinpeople.com.br',
-        password: '123456'
+        password: '123456',
+        company: {
+          name: 'Glambel',
+          trade_name: 'Glambel',
+          email: 'glambel@glambel.com.br',
+          website_facebook: 'https://glambel.com.br',
+          business_description: 'Empresa de beleza'
+        }
       }
     end
 
-    it 'returns HTTP status :ok (200) with created user data' do
-      post '/api/users/sign_up', params: { sign_up: sign_up_params }
+    context 'when signing up with user and company data' do
+      it 'returns HTTP status :created (201) with created user data and company' do
+        post '/api/users/sign_up', params: { sign_up: sign_up_params }
 
-      expected_body = {
-        data: {
-          name: sign_up_params[:name],
-          role: User.last.role,
-          email: sign_up_params[:email],
-          metadata: {}
+        expected_body = {
+          data: {
+            name: sign_up_params[:name],
+            role: User.last.role,
+            email: sign_up_params[:email],
+            metadata: {},
+            company:
+            {
+              id: Company.last.id,
+              name: sign_up_params[:company][:name],
+              trade_name: sign_up_params[:company][:trade_name],
+              email: sign_up_params[:company][:email],
+              website_facebook: sign_up_params[:company][:website_facebook],
+              business_description: sign_up_params[:company][:business_description],
+              status: 'active',
+              metadata: {},
+              discarded_at: nil,
+              created_at: Company.last.created_at.as_json,
+              updated_at: Company.last.updated_at.as_json
+            }
+          }
         }
-      }
 
-      expect(response).to have_http_status(:created)
-      expect(json(response.body)).to eq(expected_body)
+        expect(response).to have_http_status(:created)
+        expect(json(response.body)).to eq(expected_body)
+      end
+    end
+
+    context 'when signing up with only user data' do
+      it 'returns HTTP status :created (201) with created user data and no company' do
+        post '/api/users/sign_up', params: { sign_up: sign_up_params.except(:company) }
+
+        expected_body = {
+          data: {
+            name: sign_up_params[:name],
+            role: User.last.role,
+            email: sign_up_params[:email],
+            metadata: {},
+            company: nil
+          }
+        }
+
+        expect(response).to have_http_status(:created)
+        expect(json(response.body)).to eq(expected_body)
+      end
     end
   end
 end

@@ -8,6 +8,10 @@ RSpec.describe User do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password_digest) }
 
+    describe 'associations' do
+      it { is_expected.to belong_to(:company).optional }
+    end
+
     describe '#role' do
       let!(:user) { create(:user) }
 

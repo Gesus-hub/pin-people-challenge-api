@@ -5,12 +5,13 @@ class User
     class RegisterService < ApplicationService
       def initialize(data = {})
         @user = data
+        @company = data[:company] if data[:company].present?
 
         super
       end
 
       def call
-        result = create_user
+        result = company.present? ? create_user_and_company : create_user
 
         User::SignUp::EmailConfirmationRegisterService.call(result.id) if result
 
@@ -19,12 +20,30 @@ class User
 
       private
 
-      attr_reader :user
+      attr_reader :user, :company
 
-      def create_user
-        new_user = User.new(user_params)
+      def create_user_and_company
+        ActiveRecord::Base.transaction do
+          company = create_company
+          user = create_user(company: company)
+
+          raise ActiveRecord::Rollback if user.blank? || company.blank?
+
+          user.update!(role: 'admin')
+          user
+        end
+      end
+
+      def create_user(company: nil)
+        new_user = User.new(user.merge(company: company).merge(confirmation_data))
 
         handle_response_for(new_user)
+      end
+
+      def create_company
+        new_company = Company.new(company)
+
+        handle_response_for(new_company)
       end
 
       def user_params
