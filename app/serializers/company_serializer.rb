@@ -32,7 +32,8 @@ class CompanySerializer
       metadata: company.metadata,
       discarded_at: company.discarded_at,
       created_at: company.created_at,
-      updated_at: company.updated_at
+      updated_at: company.updated_at,
+      users: UserSerializer.new(company.users).serializable_hash
     }
   end
 end

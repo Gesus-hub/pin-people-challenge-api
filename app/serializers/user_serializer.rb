@@ -1,25 +1,32 @@
 # frozen_string_literal: true
 
 class UserSerializer
-  def initialize(user)
-    @user = user
+  def initialize(resource)
+    @resource = resource
   end
 
   def serializable_hash
-    hash_for_one_record
+    return if resource.blank?
+    return hash_for_collection if resource.is_a?(Enumerable)
+
+    hash_for_one_record(resource)
   end
 
   private
 
-  attr_reader :user
+  attr_reader :resource
 
-  def hash_for_one_record
+  def hash_for_collection
+    resource.map { |user| hash_for_one_record(user) }
+  end
+
+  def hash_for_one_record(user)
     {
-      name: @user.name,
-      email: @user.email,
-      role: @user.role,
-      metadata: @user.metadata,
-      company: CompanySerializer.new(@user.company).serializable_hash
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      metadata: user.metadata,
+      company: CompanySerializer.new(user.company).serializable_hash
     }
   end
 end
