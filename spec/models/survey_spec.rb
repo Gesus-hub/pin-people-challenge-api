@@ -6,6 +6,7 @@ RSpec.describe Survey do
   describe 'associations' do
     it { is_expected.to belong_to(:company) }
     it { is_expected.to have_many(:questions).dependent(:destroy) }
+    it { is_expected.to have_many(:responses).dependent(:destroy) }
     it { is_expected.to accept_nested_attributes_for(:questions).allow_destroy(true) }
   end
 
@@ -46,6 +47,23 @@ RSpec.describe Survey do
       survey.update(questions_attributes: [{ id: question_id, _destroy: true }])
 
       expect(Question).not_to exist(question_id)
+    end
+  end
+
+  describe '#unanswered_users' do
+    let(:company) { create(:company) }
+    let(:survey) { create(:survey, company: company) }
+    let(:responding_user) { create(:user, company: company) }
+    let(:non_responding_user) { create(:user, company: company) }
+
+    before do
+      create(:response, survey: survey, user: responding_user, question: create(:question, survey: survey),
+                        value: 'Yes')
+    end
+
+    it 'returns users who have not answered the survey' do
+      expect(survey.unanswered_users).to include(non_responding_user)
+      expect(survey.unanswered_users).not_to include(responding_user)
     end
   end
 end

@@ -1,4 +1,11 @@
 pt-BR:
+  activerecord:
+    errors:
+      models:
+        response:
+          attributes:
+            user_id:
+              already_responded: "já respondeu esta pesquisa."
   mailer:
     confirmation:
       subject: Glambel | Confirmação de cadastro

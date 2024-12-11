@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      response: 'Resposta'
+    attributes:
+      response:
+        value: 'Valor'
+        user_id: 'Usuário'
+    errors:
+      models:
+        response:
+          attributes:
+            user_id:
+              already_responded: "já respondeu esta pesquisa."

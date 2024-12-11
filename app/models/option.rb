@@ -4,6 +4,8 @@ class Option < ApplicationRecord
   include Discard::Model
 
   belongs_to :question
+
+  validates :value, presence: true
 end
 
 # == Schema Information
