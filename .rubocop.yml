@@ -73,6 +73,11 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+  Exclude:
+    - spec/requests/api/companies/surveys/invites_spec.rb
+
 Style/Documentation:
   Enabled: false
 

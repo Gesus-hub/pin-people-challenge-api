@@ -27,7 +27,8 @@ class SurveySerializer
       created_at: survey.created_at,
       updated_at: survey.updated_at,
       company: CompanySerializer.new(survey.company).serializable_hash,
-      questions: QuestionSerializer.new(survey.questions).serializable_hash
+      questions: QuestionSerializer.new(survey.questions).serializable_hash,
+      responses: ResponseSerializer.new(survey.responses).serializable_hash
     }
   end
 end
