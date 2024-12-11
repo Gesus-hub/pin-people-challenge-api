@@ -2,7 +2,7 @@ class CreateSurveys < ActiveRecord::Migration[7.0]
   disable_ddl_transaction!
 
   def change
-    create_table :surveys do |t|
+    create_table :surveys, id: :uuid do |t|
       t.string :title, null: false
       t.datetime :discarded_at,          index: true
 
