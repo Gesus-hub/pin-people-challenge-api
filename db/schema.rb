@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_11_025633) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_11_032243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_025633) do
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_companies_on_discarded_at"
     t.index ["metadata"], name: "index_companies_on_metadata", using: :gin
+  end
+
+  create_table "options", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "value", null: false
+    t.datetime "discarded_at"
+    t.uuid "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_options_on_discarded_at"
+    t.index ["question_id"], name: "index_options_on_question_id"
   end
 
   create_table "questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -83,6 +93,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_025633) do
     t.index ["role"], name: "index_users_on_role"
   end
 
+  add_foreign_key "options", "questions"
   add_foreign_key "questions", "surveys"
   add_foreign_key "surveys", "companies"
   add_foreign_key "users", "companies"
