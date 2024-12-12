@@ -13,7 +13,7 @@ gem 'pg', '~> 1.1'
 gem 'strong_migrations', '~> 2.0.0'
 
 # Tools
-gem 'activerecord-import', '~> 1.4.0'
+gem 'activerecord-import', '~> 2.0.0'
 gem 'bcrypt', '~> 3.1.20'
 gem 'discard', '~> 1.4.0'
 gem 'jwt', '~> 2.9.3'
