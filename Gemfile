@@ -38,7 +38,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'database_cleaner', '~> 2.1.0'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
-  gem 'dotenv-rails', '~> 3.1.4'
+  gem 'dotenv-rails', '~> 3.1.5'
   gem 'factory_bot_rails', '~> 6.4.3'
   gem 'faker', '~> 3.4.2'
   gem 'pry-byebug', '~> 3.10'
