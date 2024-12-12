@@ -10,7 +10,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # Database
 gem 'pg', '~> 1.1'
-gem 'strong_migrations', '~> 2.0.0'
+gem 'strong_migrations', '~> 2.1.0'
 
 # Tools
 gem 'bcrypt',      '~> 3.1.20'
