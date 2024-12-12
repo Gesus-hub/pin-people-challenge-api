@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   include Discard::Model
 
   has_many :users, dependent: :destroy
+  has_many :surveys, dependent: :destroy
 
   STATUSES = %i[inactive active].freeze
   enum :status, STATUSES

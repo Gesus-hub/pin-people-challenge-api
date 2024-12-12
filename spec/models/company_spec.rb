@@ -12,6 +12,7 @@ RSpec.describe Company do
 
     describe 'associations' do
       it { is_expected.to have_many(:users).dependent(:destroy) }
+      it { is_expected.to have_many(:surveys).dependent(:destroy) }
     end
   end
 end
