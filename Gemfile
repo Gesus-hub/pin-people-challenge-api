@@ -23,7 +23,7 @@ gem 'rswag-ui',    '~> 2.16.0'
 group :development do
   gem 'annotate', '~> 3.2.0'
   gem 'letter_opener', '~> 1.10.0'
-  gem 'rubocop', '~> 1.68.0', require: false
+  gem 'rubocop', '~> 1.69.2', require: false
   gem 'rubocop-factory_bot', '~> 2.26.1', require: false
   gem 'rubocop-performance', '~> 1.23.0', require: false
   gem 'rubocop-rails', '~> 2.27.0', require: false
