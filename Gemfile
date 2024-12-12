@@ -43,7 +43,7 @@ group :development, :test do
   gem 'faker', '~> 3.4.2'
   gem 'pry-byebug', '~> 3.10'
   gem 'pry-rails', '~> 0.3.11'
-  gem 'rspec-rails', '~> 7.0.1'
+  gem 'rspec-rails', '~> 7.1.0'
   gem 'rswag-specs',           '~> 2.16.0'
   gem 'rubocop-rails-omakase', require: false
   gem 'shoulda-matchers', '~> 6.4.0', require: false
