@@ -40,7 +40,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'dotenv-rails', '~> 3.1.4'
   gem 'factory_bot_rails', '~> 6.4.3'
-  gem 'faker', '~> 3.4.2'
+  gem 'faker', '~> 3.5.1'
   gem 'pry-byebug', '~> 3.10'
   gem 'pry-rails', '~> 0.3.11'
   gem 'rspec-rails', '~> 7.0.1'
